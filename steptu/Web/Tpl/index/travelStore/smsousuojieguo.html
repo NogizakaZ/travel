@@ -46,7 +46,8 @@ background-color: #d2dffe;
 -->1
 </STYLE>
 <div class="quanbu">
-
+<a href="{:U('Index/travelStore/smsousuojieguo')}"><img src="../Public/images/travelstore/zhu.png" class="zhu"></a>
+<a href="{:U('Index/travelStore/travelStore')}"><img src="../Public/images/travelstore/chi.png" class="chi" onclick="showchi()"></a>
 	<img src="../Public/images/travelsm.png" class="travelsm">
    <img src="../Public/images/personal.png"class="personal">
    <img src="../Public/images/travel.png" class="travel" >
@@ -86,10 +87,10 @@ background-color: #d2dffe;
 
           <div style="position:absolute;top:107px;left:10px;font-size:13px;color:#AAAAAA;">位置</div>
           <div  id="buxian2" class="buxian22" onclick="showbuxian2()">不限</div>
-                <div style="position:absolute;top:107px;left:125px;" onclick="showshangyequ()">商业区<img src="../Public/images/travelstore/xiajiantou.png" style="position:relative;top:-2px;"id="shangyequtu" ></div>
-                <div style="position:absolute;top:107px;left:195px;" onclick="showjichang()">机场/火车站<img src="../Public/images/travelstore/xiajiantou.png" style="position:relative;top:-2px;"id="jichangtu"></div>
-                <div style="position:absolute;top:107px;left:295px;" onclick="showxingzhengqu()">行政区/下辖市县<img src="../Public/images/travelstore/xiajiantou.png"style="position:relative;top:-2px;" id="xingzhengqutu"></div>
-                 <div style="position:absolute;top:107px;left:425px;"onclick="showjingdian()">景点<img src="../Public/images/travelstore/xiajiantou.png" style="position:relative;top:-2px;"id="jingdiantu"></div>
+                <div style="position:absolute;top:107px;left:125px;cursor: pointer;" onclick="showshangyequ()">商业区<img src="../Public/images/travelstore/xiajiantou.png" style="position:relative;top:-2px;"id="shangyequtu" ></div>
+                <div style="position:absolute;top:107px;left:195px;cursor: pointer;" onclick="showjichang()">机场/火车站<img src="../Public/images/travelstore/xiajiantou.png" style="position:relative;top:-2px;"id="jichangtu"></div>
+                <div style="position:absolute;top:107px;left:295px;cursor: pointer;" onclick="showxingzhengqu()">行政区/下辖市县<img src="../Public/images/travelstore/xiajiantou.png"style="position:relative;top:-2px;" id="xingzhengqutu"></div>
+                 <div style="position:absolute;top:107px;left:425px;cursor: pointer;"onclick="showjingdian()">景点<img src="../Public/images/travelstore/xiajiantou.png" style="position:relative;top:-2px;"id="jingdiantu"></div>
 
 
 
@@ -365,16 +366,68 @@ var weizhishangchuan = "不限";
   });
 
   $("#zhusousuomudidi").blur(function(){
-     $.post("http://127.0.0.1/steptu/index.php/travelStore/hello",function(data)
-    {
-      // alert( $("#zhusousuomudidi").val())
-      // alert(data['address'][2]);
-      document.getElementById("xingzhengqu").innerHTML=data['address'][2];
+
+    var url = '{:U(\'Index/travelStore/living\')}';
+     $.post(url,{data:$("#zhusousuomudidi").val()},function(data){
+      // console.log(data.shangyequ.length);
+      // alert(data.jichang[1].station);
+      var i = 1;
+      var tianjia="";
+        console.log(data.jichang.length);
+
+      for (;i<=(data.shangyequ.length); i++) {
+        tianjia+="<span class='weizhiziti'>"+data.shangyequ[i-1].business+"</span>"
+      };
+       i=1;
+       console.log(tianjia);
+       document.getElementById("shangyequ").innerHTML=tianjia;
+       tianjia="";
+       // console.log(tianjia);
+
+     for (;i<=(data.jichang.length); i++) {
+        tianjia+="<span class='weizhiziti'>"+data.jichang[i-1].station+"</span>"
+      };
+      i=1;
+      // console.log(tianjia);
+       document.getElementById("jichang").innerHTML=tianjia;
+       tianjia=""
+        
+
+        for (;i<=(data.xingzhengqu.length); i++) {
+        tianjia+="<span class='weizhiziti'>"+data.xingzhengqu[i-1].xian+"</span>"
+      };
+      i=1;
+       document.getElementById("xingzhengqu").innerHTML=tianjia;
+       tianjia=""
+        for (;i<=(data.jingdian.length); i++) {
+        tianjia+="<span class='weizhiziti'>"+data.jingdian[i-1].jingdian+"</span>"
+      };
+      i=1;
+       document.getElementById("jingdian").innerHTML=tianjia;
+       tianjia=""
+
+
+     $(".weizhiziti").click(function(){
+    buxian2.style.color="black"
+    $(".weizhiziti").removeClass("weizhiziti2");
+
+    $(this).addClass("weizhiziti2");
+    weizhishangchuan=$(this).html();
+     $("#yincang").val(weizhishangchuan);
+      // alert($("#yincang").val());
+
+  });
+
+
+
+
+
     }
       )
 
    }
   )
+ 
 
   // 百度地图API功能
   var zidingdizhi = "北京大学";
