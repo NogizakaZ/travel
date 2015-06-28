@@ -109,7 +109,11 @@
 
 	 	public function myEvaluations(){
 	 		$user['id'] = 1;
+	 		var_dump(I("class"));
+	 		$this->class = I("class");
 	 		$this->juge = I('juge',1);
+
+
 	 		$this->user = M('usertable')->field('id,name,image,phone,email')->where($user)->find();
 
 	 		$condition['userId'] = 1;
@@ -118,9 +122,12 @@
 	 		$count = M('comment')->where($condition)->count();
 	 		$page = new Page($count,2);
 	 		$this->show = $page->show();
+
+
 	 		$this->order = M('comment')->where($condition)->limit($page->firstRow.','.$page->listRows)->order('id desc')->select(); 
 	 		 //得到评论的id号 ，展示其内容 
 	 		$this->travelId = I('travelId');
+
 	 		$this->display();
 	 	}
 	 	// 保存订单评论
@@ -131,25 +138,13 @@
 	 		$data['travelId'] = I('travelId');
 	 		$data['userId'] = 1;
 	 		$data['content'] = I('content');
+	 		$data['class'] = I("class");
 	 		$data['level'] = I('level');
 	 		$data['time'] = date('Y-m-d');
 
-	 		import('ORG.Net.UploadFile');
-	 		$file = new UploadFile();
-	 		$file->maxSize = 3333333333333;
-	 		$file->allowExts = array('jpg','png','jpeg','gif');
-	 		$file->savePath = './Public/uploads/hotel/';
-
-	 		if(!$file->upload()){
-	 			
-	 		}else{
-	 			$info = $file-> getUploadFileInfo();
-	 			$data['image'] = $info[0]['savepath'].$info[0]['savename'];
-	 		}
-
 	 		$orderComment->add($data);
 
-	 		$this->redirect('myEvaluations',array('travelId'=>$data['travelId']));
+	 		$this->redirect('myEvaluations',array('travelId'=>$data['travelId'],'class'=>I("class")));
 	  	}
 
 	 	public function myTravealBook(){
@@ -190,20 +185,7 @@
 	 			$this->redirect("myTravealBook");
 	 		}
 	 	}
-	 	// //读自己的信
-	 	// public function readLetter(){
-	 
-	 	// 	$this->user = M('usertable')->field('id,name,image,phone,email')->where('id = 1')->find();
-	 	// 	import('ORG.Util.Page');
-	 	// 	//where 中的条件为session or cookie得到的
-	 	// 	$data = M('letter');
-	 	// 	$condition['userId'] = 1;
-	 	// 	$count = $data->where($condition)->count();
-	 	// 	$page = new Page($count,3);
-	 	// 	$this->show = $page->show();
-	 	// 	$this->list = M('letter')->where($condition)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
-	 	// 	$this->display('readTravelBook');
-	 	// }
+	 	
 
 	 	function myGrades(){
 

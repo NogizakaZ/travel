@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url("../images/register/backgroung.png");
+    background-image: url("../images/travelBook/background.png");
     /*background-size: ;*/
     /*background-repeat: space;*/
 }
@@ -115,4 +115,11 @@ body{
 }
 .twoBtn a:hover{
     color: black;
+}
+a{
+    color: #444444;
+}
+a:hover{
+    color: red;
+    font-weight: bolder;
 }

@@ -334,3 +334,10 @@ display: none;
 {
 	position: absolute;left: 230px;top: 280px;height: 234px;width: 288px;
 }
+.dengluchenggong
+{
+	position: absolute;
+	left: 920px;
+	top: 30px;
+	font-size: 14px;
+}
