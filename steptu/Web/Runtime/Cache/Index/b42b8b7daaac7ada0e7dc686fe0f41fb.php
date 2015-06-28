@@ -24,6 +24,13 @@ jQuery(document).ready(function($) {
 
 })
 </script>
+<script type="text/javascript">
+function showjieguo(){
+    zhuhaohuajieguo.style.display="block";
+    zhuhaohuatu.style.display="none";
+}
+
+</script>
 </head>
 <body >
 
@@ -40,7 +47,7 @@ background-repeat: no-repeat;
 }
 
 -->
-</STYLE> 
+</STYLE>
 
 
 <div class="quanbu">
@@ -58,28 +65,29 @@ background-repeat: no-repeat;
     </div>
      <div class="Cont" id="ISL_Cont">
       <div class="ScrCont">
+
        <div id="List1">
         <!-- 图片列表 begin -->
-       
+
          <div class="pic">
           <a href="<#ZC_BLOG_HOST#>?cat=1" target="_blank"><img src="<?php echo ($season[0]["image"]); ?>.jpg" width="145" height="145" alt="一号图片"  onload="return imgzoom(this,600);" onclick="javascript:window.open(this.src);" style="cursor:pointer;"/></a>
-          <a href="<#ZC_BLOG_HOST#>?cat=1" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[0]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[0]["price"]); ?>起</div></a>
+          <a href="<?php echo U('Index/package/package');?>" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[0]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[0]["price"]); ?>起</div></a>
 
          </div>
-      
+
  <div class="pic">
           <a href="<#ZC_BLOG_HOST#>?cat=2" target="_blank"><img src="<?php echo ($season[1]["image"]); ?>.jpg" width="145" height="145" alt="二号图片"  onload="return imgzoom(this,600);" onclick="javascript:window.open(this.src);" style="cursor:pointer;"/></a>
-          <a href="<#ZC_BLOG_HOST#>?cat=2" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[1]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[1]["price"]); ?>起</div></a>
+          <a href="<?php echo U('Index/package/package');?>" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[1]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[1]["price"]); ?>起</div></a>
 
          </div>
          <div class="pic">
           <a href="<#ZC_BLOG_HOST#>?cat=3" target="_blank"><img src="<?php echo ($season[2]["image"]); ?>.jpg" width="145" height="145" alt="三号图片"  onload="return imgzoom(this,600);" onclick="javascript:window.open(this.src);" style="cursor:pointer;"/></a>
-          <a href="<#ZC_BLOG_HOST#>?cat=3" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[2]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[2]["price"]); ?>起</div></a>
+          <a href="<?php echo U('Index/package/package');?>" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[2]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[2]["price"]); ?>起</div></a>
 
          </div>
          <div class="pic">
           <a href="<#ZC_BLOG_HOST#>?cat=4" target="_blank"><img src="/image/4.jpg" width="145" height="145" alt="四号图片"  onload="return imgzoom(this,600);" onclick="javascript:window.open(this.src);" style="cursor:pointer;"/></a>
-          <a href="<#ZC_BLOG_HOST#>?cat=4" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[3]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[3]["price"]); ?>起</div></a>
+          <a href="<?php echo U('Index/package/package');?>" target="_blank"><div style="font-size:15px;font-family: SimHei;color:#046bb3;"><?php echo ($season[3]["name"]); ?></div><div style="font-size:15px;font-family: SimHei;color:#ff8004;"><?php echo ($season[3]["price"]); ?>起</div></a>
 
          </div>
          <div class="pic">
@@ -99,13 +107,14 @@ background-repeat: no-repeat;
          </div>
         <!-- 图片列表 end -->
        </div>
+
        <div id="List2"></div>
       </div>
      </div>
      <div class="yougun" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown1()" onmouseout="ISL_StopDown()" onmouseover="document.images['youguntu'].src='/steptu/Web/Tpl/Index/Public/images/yougun1.png'" >
      	<img id="youguntu" src="/steptu/Web/Tpl/Index/Public/images/yougun.png"></div>
     </div>
-   
+
 </div>
 <!--以上这一段是优惠套餐滚动实现-->
 
@@ -115,23 +124,27 @@ background-repeat: no-repeat;
 	<img src="__IMG__/lvyouzhi1.png" class="lvyouzhi">
   <img src="__IMG__/lvyouzhi2.png" class="lvyouzhi2">
 	<div class="lvyouzhicontent">
-		
+      <img src="" style="width:150px;height:150px;margin:15px 0 0 15px;">
+
+    <div style=" word-wrap:break-word; word-break:break-all;width:150px;margin:5px 0 0 15px;font-size:14px;"><?php echo ($note[0]["note"]); ?></div>
+
 	</div>
   <div class="zhuhaohuaform">
-  <form action="" name="zhuxianghaohua" method="post" >
+  <form action="<?php echo U('Index/index/index');?>" name="zhuxianghaohua" method="post" >
   <div style="position:absolute;left:0px;top:0px;font-size:15px;font-family: SimHei;">目的地</div><input name="destination" type="text" style="position:absolute;width:95px;left:70px;top:-3px;border-radius:4px;"/>
   <div style="position:absolute;left:0px;top:40px;font-size:15px;font-family: SimHei;">入住时间</div><div style="position:absolute;width:90px;left:70px;top:37px;"><input name="intime" type="text"style="width:100px;" class="easyui-datebox" required="required" data-options="formatter:myformatter,parser:myparser"/></div>
   <div style="position:absolute;left:0px;top:80px;font-size:15px;font-family: SimHei;">离店时间</div><div style="position:absolute;width:120px;left:70px;top:77px;"><input id="outtime" type="text" style="width:100px;" class="easyui-datebox" required="required" data-options="formatter:myformatter,parser:myparser"/></div>
   <div style="position:absolute;left:0px;top:120px;font-size:15px;font-family: SimHei;">酒店品牌</div><select name="brand" style="position:absolute;width:100px;left:70px;top:117px;font-size:18px;">
-  <option value="希尔顿">希尔顿</option>
-  <option value="洲际酒店">洲际酒店</option>
+		<?php if(is_array($hotel)): foreach($hotel as $key=>$hotel): ?><option value="<?php echo ($hotel["hotelName"]); ?>" name='brand'><?php echo ($hotel["hotelName"]); ?></option><?php endforeach; endif; ?>
+  <!-- <option value="洲际酒店">洲际酒店</option> -->
 </select>
-  
-  <div style="position:absolute;left:50px;top:180px;"><input type="image" src="__IMG__/search.png" style="border:0;" ></div>
+
+  <div style="position:absolute;left:50px;top:180px;"><input type="image" src="__IMG__/search.png" style="border:0;" onclick="showjieguo()" />
+  </div>
   </form>
   </div>
   <img src="__IMG__/zhufenge.png" class="zhufenge">
-  <div class="zhuhaohuatu">
+  <div class="zhuhaohuatu" id="zhuhaohuatu">
 
 <div id="demo" style="height:250px;width:280px; overflow:hidden; ">
 <div id="demo1">
@@ -143,9 +156,31 @@ background-repeat: no-repeat;
 </div>
 
   </div>
+<div style="position: absolute;left: 230px;top: 280px;height: 234px;width: 288px;display:none" id="zhuhaohuajieguo">
+<?php if(is_array($hotel)): foreach($hotel as $key=>$hotel): ?><div style="position:absolute;left:10px;width:130px;height:100px;">
+<img src="" style="width:130px;height:70px;">
+<div style="font-size:13px;width:130px;"><?php echo ($hotel["hotelName"]); ?><span style="position:absolute;left:90px;color:#ff8004;"><?php echo ($hotel["price"]); ?></span></div>
+</div><?php endforeach; endif; ?>
+<!-- <div style="position:absolute;left:150px;width:130px;height:100px;">
+<img src="" style="width:130px;height:70px;">
+<div style="font-size:13px;width:130px;">喜来登 <span style="position:absolute;left:90px;color:#ff8004;">￥500</span></div>
 </div>
-	    
-	
+
+<div style="position:absolute;left:10px;top:120px;width:130px;height:100px;">
+<img src="" style="width:130px;height:70px;">
+<div style="font-size:13px;width:130px;">喜来登 <span style="position:absolute;left:90px;color:#ff8004;">￥500</span></div>
+</div>
+
+<div style="position:absolute;left:150px;top:120px;width:130px;height:100px;">
+<img src="" style="width:130px;height:70px;">
+<div style="font-size:13px;width:130px;">喜来登 <span style="position:absolute;left:90px;color:#ff8004;">￥500</span></div>
+</div> -->
+
+</div>
+
+</div>
+
+
    <img src="__IMG__/travelsm.png" class="travelsm">
    <img src="__IMG__/personal.png"class="personal">
    <img src="__IMG__/travel.png" class="travel" >
@@ -156,7 +191,7 @@ background-repeat: no-repeat;
   <img src="__IMG__/xuanchuan.png"class="xuanchuan">
    <!-- <img src="__IMG__/logo.png"class="logo"> -->
    <img src="__IMG__/phone.png"class="phone">
-	
+
 		<img src="__IMG__/register.png"class="register">
 
 
@@ -201,6 +236,6 @@ background-repeat: no-repeat;
      </div>
 </div>
 <div class="theme-popover-mask"></div>
-  
+
 </body>
 </html>
