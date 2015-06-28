@@ -69,7 +69,7 @@ background-color: #d2dffe;
 
 <a href="javascript:;"class=" btn-large theme-login" style=""><img src="../Public/images/login.png"   class="login"></a>
 <img src="../Public/images/register.png"class="register">
-<img src="../Public/images/travelstore/zhu.png" class="zhu" onclick="showzhu()">
+<a href="<?php echo U('Index/travelStore/smsousuojieguo');?>"><img src="../Public/images/travelstore/zhu.png" class="zhu"></a>
 <img src="../Public/images/travelstore/chi.png" class="chi" onclick="showchi()">
 <div class="zhongyang">
 	<img src="../Public/images/travelstore/smtiao.png" style="">
@@ -142,11 +142,11 @@ background-color: #d2dffe;
 <div class="gerenxinxi">
   <img src="../Public/images/travelstore/wodexinxi.png" style="position:relative;top:3px;left:5px;float:left;">
   <div style="position:relative;top:3px;left:7px;font-size:16px;">我的信息</div>
-  <div style="position:relative;font-size:13px;top:20px;">尊敬的会员 <span id="smhuiyuanming" style="font-size:13px;">moonsin</span>,欢迎您！</div>
-   <div style="position:absolute;left:10px;top:62px;font-size:13px;">订单总数：<span id="dingdanzongshu" style="font-size:17px;font-family: SimHei;color:#ff8004">1</span></div>
+  <div style="position:relative;font-size:13px;top:20px;">尊敬的会员 <span id="smhuiyuanming" style="font-size:13px;"><?php echo ($usr); ?></span>,欢迎您！</div>
+   <div style="position:absolute;left:10px;top:62px;font-size:13px;">订单总数：<span id="dingdanzongshu" style="font-size:17px;font-family: SimHei;color:#ff8004"><?php echo ($cou); ?></span></div>
   <table  style="width: 157px;height: 30px;border:1px solid #c6c6c6;position:absolute;top:100px;left:10px;">
 <td width="57px" align="center" class="" style= "cursor:pointer;border:1px solid #c6c6c6;font-size:15px;">合计</td>
-<td  id="hejijiage"width="100px" align="center" class="" style= "cursor:pointer; font-size:15px;font-family: SimHei;color:red;">￥2300</td>
+<td  id="hejijiage"width="100px" align="center" class="" style= "cursor:pointer; font-size:15px;font-family: SimHei;color:red;">￥<?php echo ($price); ?></td>
   </table>
 </div>
 
