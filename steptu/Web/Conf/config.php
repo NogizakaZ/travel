@@ -14,5 +14,6 @@ return array(
     'DB_PORT'               => '3306',        // 端口
     'DB_PREFIX'             => '',
     'SHOW_PAGE_TRACE' => true,  // 数据库表前缀
+		'COOKIE_PATH' => '/',
 );
 ?>

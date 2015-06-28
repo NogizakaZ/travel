@@ -48,9 +48,10 @@ class loginVerifyAction extends Action{
 		{
 			$data['code']=1;
 			$data['msg']='登录成功';
+			cookie("username",$user['name'],3600);
+			cookie("userid",$user['id'],3600);
 			$this->ajaxReturn($data,'JSON');
-			setcookie("username",$user['username'],time()+3600,"/");
-			setcookie("userid",$user['id'],time()+3600,"/");
+
 		}
 
 

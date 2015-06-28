@@ -41,6 +41,16 @@
 		}
 
 		public function travelStore(){
+			if($_cookie['name']==''){
+				redirect(U('Index/index/index','',''));
+			}
+			$id = cookie['id'];
+			$usr = cookie['name'];
+			$cou = M('order')->where(array('id'=>$id))->count();
+			$price = M('order')->where(array('id'=>$id))->sum('price');
+			$this->assign('price',$price);
+			$this->assign('cou',$cou);
+			$this->assign('usr',$usr);
 				if(IS_POST){
 					$shifadi = I('smshifadi');
 					$mudidi= I('smmudidi');
